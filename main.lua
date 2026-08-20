@@ -5,9 +5,16 @@ local window = Rayfield:CreateWindow({
     subtitle = "Rayfield Gen2",
 })
 
-local tab = window:CreateTab({ name = "Home", icon = 93364949241311 })
+local basictab = window:CreateTab({ name = "Basic", icon = 93364949241311 })
 
-tab:CreateToggle({
-    name = "Auto Sprint",
-    callback = function(value) print(value) end,
+
+basictab:CreateSlider({
+    name = "Speed",
+    range = { 0, 120 },
+    increment = 1,
+    value = 16,
+    suffix = "walkspeed",
+    callback = function(value)
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = value
+    end,
 })
